@@ -34,13 +34,13 @@
             this.lblvalorin = new System.Windows.Forms.Label();
             this.lblpagamento = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtcpfhin = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtvalorpgin = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtreservasin = new System.Windows.Forms.DataGridView();
             this.btnfinin = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtreservasin)).BeginInit();
             this.SuspendLayout();
             // 
             // lblcpfhin
@@ -97,12 +97,13 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "label6";
             // 
-            // textBox1
+            // txtcpfhin
             // 
-            this.textBox1.Location = new System.Drawing.Point(217, 137);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
+            this.txtcpfhin.Location = new System.Drawing.Point(217, 137);
+            this.txtcpfhin.Name = "txtcpfhin";
+            this.txtcpfhin.Size = new System.Drawing.Size(100, 20);
+            this.txtcpfhin.TabIndex = 6;
+            this.txtcpfhin.TextChanged += new System.EventHandler(this.txtcpfhin_TextChanged);
             // 
             // textBox2
             // 
@@ -111,12 +112,12 @@
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 7;
             // 
-            // textBox3
+            // txtvalorpgin
             // 
-            this.textBox3.Location = new System.Drawing.Point(325, 414);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 8;
+            this.txtvalorpgin.Location = new System.Drawing.Point(325, 414);
+            this.txtvalorpgin.Name = "txtvalorpgin";
+            this.txtvalorpgin.Size = new System.Drawing.Size(100, 20);
+            this.txtvalorpgin.TabIndex = 8;
             // 
             // comboBox1
             // 
@@ -126,13 +127,13 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 9;
             // 
-            // dataGridView1
+            // dtreservasin
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(165, 204);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 150);
-            this.dataGridView1.TabIndex = 10;
+            this.dtreservasin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtreservasin.Location = new System.Drawing.Point(165, 204);
+            this.dtreservasin.Name = "dtreservasin";
+            this.dtreservasin.Size = new System.Drawing.Size(776, 150);
+            this.dtreservasin.TabIndex = 10;
             // 
             // btnfinin
             // 
@@ -142,6 +143,7 @@
             this.btnfinin.TabIndex = 11;
             this.btnfinin.Text = "Finalizar Check-in";
             this.btnfinin.UseVisualStyleBackColor = true;
+            this.btnfinin.Click += new System.EventHandler(this.btnfinin_Click);
             // 
             // Check_in
             // 
@@ -149,11 +151,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1146, 657);
             this.Controls.Add(this.btnfinin);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtreservasin);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtvalorpgin);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtcpfhin);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblpagamento);
             this.Controls.Add(this.lblvalorin);
@@ -164,7 +166,8 @@
             this.Name = "Check_in";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Check_in";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Check_in_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtreservasin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,11 +181,11 @@
         private System.Windows.Forms.Label lblvalorin;
         private System.Windows.Forms.Label lblpagamento;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtcpfhin;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtvalorpgin;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtreservasin;
         private System.Windows.Forms.Button btnfinin;
     }
 }

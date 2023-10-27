@@ -28,3 +28,9 @@ F:\C#\Hotel\dsnoite\Modelo\obj\Debug\Modelo.csproj.AssemblyReference.cache
 F:\C#\Hotel\dsnoite\Modelo\obj\Debug\Modelo.csproj.CoreCompileInputs.cache
 F:\C#\Hotel\dsnoite\Modelo\obj\Debug\Modelo.dll
 F:\C#\Hotel\dsnoite\Modelo\obj\Debug\Modelo.pdb
+C:\Users\aluno\Documents\Hotel\Modelo\bin\Debug\Modelo.dll
+C:\Users\aluno\Documents\Hotel\Modelo\bin\Debug\Modelo.pdb
+C:\Users\aluno\Documents\Hotel\Modelo\obj\Debug\Modelo.csproj.AssemblyReference.cache
+C:\Users\aluno\Documents\Hotel\Modelo\obj\Debug\Modelo.csproj.CoreCompileInputs.cache
+C:\Users\aluno\Documents\Hotel\Modelo\obj\Debug\Modelo.dll
+C:\Users\aluno\Documents\Hotel\Modelo\obj\Debug\Modelo.pdb

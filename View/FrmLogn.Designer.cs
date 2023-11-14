@@ -82,6 +82,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(186, 20);
             this.txtUsuario.TabIndex = 4;
+            this.txtUsuario.Text = "pedro";
             this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // txtSenha
@@ -91,6 +92,7 @@
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(186, 20);
             this.txtSenha.TabIndex = 5;
+            this.txtSenha.Text = "aula123";
             // 
             // linkLabel1
             // 

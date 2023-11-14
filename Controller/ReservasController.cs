@@ -13,18 +13,52 @@ namespace Controller
     {//instanciei o objeto conexao
         Conexao con = new Conexao();
         //criando o metodo de cadastrar reservas
-        public bool cadastrar(ReservasModelo reservas)//passo o objeto reservas
-        {//declaro a variavel da resposta da query
+        public bool cadastrar(ReservasModelo reservas)
+        {
             bool resultado = false;
-            string sql = "insert into reservas(idh,idq,datainr,dataoutr,preçor,nhospedesr,statusr)" + "values(" + reservas.idh + "," + reservas.idq + ",'" + reservas.datainr + "','" + reservas.dataoutr + "'," + reservas.preçor + "," + reservas.nhospedesr + ",'" + reservas.statusr + "')";
-            //chamando minha conexao
+            string sql = "INSERT INTO reservas(idh, idq, datainr, dataoutr, preçor, nhospedesr, statusr)" +
+                         "VALUES (@idh, @idq, @datainr, @dataoutr, @preçor, @nhospedesr, @statusr)";
+
             MySqlConnection sqlCon = con.getConexao();
-            sqlCon.Open();//abrindo o banco
-            MySqlCommand cmd = new MySqlCommand(sql, sqlCon);
-            if (cmd.ExecuteNonQuery() >= 1)//executar o seu sql
-                resultado = true;
-            sqlCon.Close();//fecho a conexao
-            return resultado;//retorno o valor
+            sqlCon.Open();
+
+            using (MySqlCommand cmd = new MySqlCommand(sql, sqlCon))
+            {
+                // Use parâmetros para as datas
+                cmd.Parameters.AddWithValue("@idh", reservas.idh);
+                cmd.Parameters.AddWithValue("@idq", reservas.idq);
+                cmd.Parameters.AddWithValue("@datainr", reservas.datainr.ToString("yyyy-MM-dd HH:mm:ss"));
+                cmd.Parameters.AddWithValue("@dataoutr", reservas.dataoutr.ToString("yyyy-MM-dd HH:mm:ss"));
+                cmd.Parameters.AddWithValue("@preçor", reservas.preçor);
+                cmd.Parameters.AddWithValue("@nhospedesr", reservas.nhospedesr);
+                cmd.Parameters.AddWithValue("@statusr", reservas.statusr);
+
+                using (var transaction = sqlCon.BeginTransaction())
+                {
+                    try
+                    {
+                        cmd.Transaction = transaction;
+
+                        if (cmd.ExecuteNonQuery() >= 1)
+                        {
+                            transaction.Commit();
+                            resultado = true;
+                        }
+                        else
+                        {
+                            transaction.Rollback();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Trate a exceção, se necessário
+                        Console.WriteLine(ex.Message);
+                        transaction.Rollback();
+                    }
+                }
+            }
+            sqlCon.Close();
+            return resultado;
         }
         public DataTable obterdados(string sql)
         {
@@ -60,7 +94,7 @@ namespace Controller
         public bool editar(ReservasModelo res)
         {
             bool resultado = false;
-            string sql = "UPDATE reservas set idh=@idh,idq=@idq,datainr=@datainr,dataoutr=@dataoutr,nhospedes=@nhospedes,status=@status,preçor=@preçor where idr=@id ";
+            string sql = "UPDATE reservas set idh=@idh,idq=@idq,datainr=@datainr,dataoutr=@dataoutr,nhospedesr=@nhospedesr,statusr=@statusr,preçor=@preçor where idr=@idr ";
             MySqlConnection sqlcon = con.getConexao();
             sqlcon.Open();
             MySqlCommand command = new MySqlCommand(sql, sqlcon);
@@ -101,7 +135,7 @@ namespace Controller
             ReservasModelo res = new ReservasModelo();
             MySqlConnection sqlcon = con.getConexao();
             sqlcon.Open();
-            string sql = "SELECT * from reserva where idr=@id";
+            string sql = "SELECT * from reservas where idr=@id";
             MySqlCommand cmd = new MySqlCommand(sql, sqlcon);
             cmd.Parameters.AddWithValue("@id", codigo);//substituo o valor do codigo
             MySqlDataReader registro = cmd.ExecuteReader();//leia os dados da consulta
@@ -121,5 +155,21 @@ namespace Controller
             return res;
         }
         //finaliza o metodo
+        public bool ReservaExisteParaHospede(string idh)
+        {
+            string query = $"SELECT COUNT(*) FROM reservas WHERE idh = '{idh}'";
+            DataTable dt = obterdados(query);
+
+            return Convert.ToInt32(dt.Rows[0][0]) > 0;
+        }
+        public bool ReservaExistenteParaQuartoPeriodo(int idq, DateTime datainr, DateTime dataoutr)
+        {
+            string query = $"SELECT COUNT(*) FROM reservas WHERE idq = {idq} " +
+                           $"AND ((datainr BETWEEN '{datainr.ToString("yyyy-MM-dd HH:mm:ss")}' AND '{dataoutr.ToString("yyyy-MM-dd HH:mm:ss")}') " +
+                           $"OR (dataoutr BETWEEN '{datainr.ToString("yyyy-MM-dd HH:mm:ss")}' AND '{dataoutr.ToString("yyyy-MM-dd HH:mm:ss")}'))";
+            DataTable dt = obterdados(query);
+
+            return Convert.ToInt32(dt.Rows[0][0]) > 0;
+        }
     }
 }

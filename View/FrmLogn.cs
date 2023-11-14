@@ -40,18 +40,18 @@ namespace testando
             codigoUsuario = uscontrole.logar(us);
             MessageBox.Show("Usuario ID=" + codigoUsuario.ToString());
               if (codigoUsuario >=1)
-                {
+              {
 
-                   this.Hide();//oculta a janela
+                this.Hide();//oculta a janela
                 Frmmain principal= new Frmmain(codigoUsuario);
                  
                 principal.ShowDialog();
                
-            }
-            else{
+              }
+              else
+              {
                 MessageBox.Show("Usuario ou senha invalidos");    
-            }
-            
+              }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -14,6 +14,8 @@ namespace testando
 {
     public partial class Frmhospedes : Form
     {
+        HospedeController hcontroller = new HospedeController();
+        HospedeModelo hmodelo = new HospedeModelo();
         int codigo;
         public Frmhospedes()
         {
@@ -21,21 +23,18 @@ namespace testando
         }
         private void Cadastroh_Load(object sender, EventArgs e)
         {
-            HospedeController hcontroller = new HospedeController();
             dtHospede.DataSource = hcontroller.obterdados("select hospedes.nomeh,hospedes.emailh, hospedes.telefoneh, hospedes.cpfh, hospedes.fotoh, hospedes.idh from hospedes");
             /*cbotipo.DataSource = qcontroller.obterdados("select * from status");
             cbotipo.DisplayMember = "status";
             cbotipo.ValueMember = "idstatus";*/
         }
-        // CRUD inicio
-        private void btnConectar_Click(object sender, EventArgs e)
+        private void AtualizarGridHospedes()
         {
-
+            dtHospede.DataSource = hcontroller.obterdados("select hospedes.nomeh,hospedes.emailh, hospedes.telefoneh, hospedes.cpfh, hospedes.fotoh, hospedes.idh from hospedes");
         }
+        // CRUD inicio
         private void btnCadastrar_Click(object sender, EventArgs e)
-        {
-            HospedeController hcontroller = new HospedeController();
-            HospedeModelo hmodelo = new HospedeModelo();
+        { 
             hmodelo.nomeh = txtnomeh.Text;
             hmodelo.emailh = txtemailh.Text;
             hmodelo.telefoneh = txttelefoneh.Text;
@@ -46,7 +45,7 @@ namespace testando
                 if (hcontroller.cadastrar(hmodelo) == true)
                 {
                     MessageBox.Show("cadastro com sucesso!");
-
+                    AtualizarGridHospedes();
                 }
                 else
                 {
@@ -56,8 +55,6 @@ namespace testando
         }
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            HospedeController hcontroller = new HospedeController();
-            HospedeModelo hmodelo = new HospedeModelo();
             hmodelo.nomeh = txtnomeh.Text;
             hmodelo.emailh = txtemailh.Text;
             hmodelo.telefoneh = txttelefoneh.Text;
@@ -67,6 +64,7 @@ namespace testando
             if (hcontroller.editar(hmodelo) == true)
             {
                 MessageBox.Show("Hospede atualizado com sucesso");
+                AtualizarGridHospedes();
             }
             else
             {
@@ -79,6 +77,7 @@ namespace testando
             if (hcontroller.excluir(codigo) == true)
             {
                 MessageBox.Show("codigo do hospede " + codigo + " excluido com sucesso");
+                AtualizarGridHospedes();
             }
             else
             {//falso erro ao excluir

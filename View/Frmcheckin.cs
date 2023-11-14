@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Modelo;
 using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,9 @@ namespace testando
 {
     public partial class Check_in : Form
     {
-        ReservasController rcontroller = new ReservasController();
+        ReservasController rController = new ReservasController();
+        QuartosController qController = new QuartosController();
+        QuartosModelo qModelo= new QuartosModelo();
         public Check_in()
         {
             InitializeComponent();
@@ -23,16 +26,23 @@ namespace testando
 
         private void Check_in_Load(object sender, EventArgs e)
         {
-            
-            dtreservasin.DataSource = rcontroller.obterdados("select reservas.idh, reservas.idq, date_format(reservas.datainr,'%d %m %y %T') as datainr, date_format(reservas.dataoutr,'%d %m %y %T') as dataoutr, reservas.preçor, reservas.statusr from reservas");
+
+            dTReservasin.DataSource = rController.obterdados("select reservas.idh, reservas.idq, date_format(reservas.datainr,'%d %m %y %T') as datainr, date_format(reservas.dataoutr,'%d %m %y %T') as dataoutr, reservas.preçor, reservas.nhospedesr, reservas.statusr, reservas.idr from reservas");
         }
 
         private void btnfinin_Click(object sender, EventArgs e)
         {
-
+            if (qController.AtualizarStatusQuarto(qModelo.idq, 3))
+            {
+                MessageBox.Show("Status do quarto atualizado para Reservado!");
+            }
+            else
+            {
+                MessageBox.Show("Erro ao atualizar o status do quarto.");
+            }
         }
 
-        private void txtcpfhin_TextChanged(object sender, EventArgs e)
+        /*private void txtcpfhin_TextChanged(object sender, EventArgs e)
         {
             dtreservasin.ClearSelection();
             string pesquisar = txtcpfhin.Text.ToLower();
@@ -47,12 +57,12 @@ namespace testando
                     }
                 }
             }
-            if(e.RowIndex >= 0)
+            if(0)
             {
-                DataGridViewRow row = dtreservasin.Rows[e.RowIndex];
+                DataGridViewRow row = dtreservasin.Rows[];
                 string valorpgin = row.Cells["preçor"].Value.ToString();
                 txtcpfhin.Text = valorpgin;
             }
-        }
+        }*/
     }
 }

@@ -38,9 +38,9 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.txtvalorpgin = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dtreservasin = new System.Windows.Forms.DataGridView();
+            this.dTReservasin = new System.Windows.Forms.DataGridView();
             this.btnfinin = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dtreservasin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTReservasin)).BeginInit();
             this.SuspendLayout();
             // 
             // lblcpfhin
@@ -103,7 +103,6 @@
             this.txtcpfhin.Name = "txtcpfhin";
             this.txtcpfhin.Size = new System.Drawing.Size(100, 20);
             this.txtcpfhin.TabIndex = 6;
-            this.txtcpfhin.TextChanged += new System.EventHandler(this.txtcpfhin_TextChanged);
             // 
             // textBox2
             // 
@@ -127,13 +126,13 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 9;
             // 
-            // dtreservasin
+            // dTReservasin
             // 
-            this.dtreservasin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtreservasin.Location = new System.Drawing.Point(165, 204);
-            this.dtreservasin.Name = "dtreservasin";
-            this.dtreservasin.Size = new System.Drawing.Size(776, 150);
-            this.dtreservasin.TabIndex = 10;
+            this.dTReservasin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dTReservasin.Location = new System.Drawing.Point(165, 204);
+            this.dTReservasin.Name = "dTReservasin";
+            this.dTReservasin.Size = new System.Drawing.Size(776, 150);
+            this.dTReservasin.TabIndex = 10;
             // 
             // btnfinin
             // 
@@ -151,7 +150,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1146, 657);
             this.Controls.Add(this.btnfinin);
-            this.Controls.Add(this.dtreservasin);
+            this.Controls.Add(this.dTReservasin);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.txtvalorpgin);
             this.Controls.Add(this.textBox2);
@@ -167,7 +166,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Check_in";
             this.Load += new System.EventHandler(this.Check_in_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtreservasin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dTReservasin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,7 +184,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox txtvalorpgin;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridView dtreservasin;
+        private System.Windows.Forms.DataGridView dTReservasin;
         private System.Windows.Forms.Button btnfinin;
     }
 }

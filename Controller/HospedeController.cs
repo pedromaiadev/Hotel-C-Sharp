@@ -14,6 +14,7 @@ namespace Controller
         
             //instanciei o objeto conexao
             Conexao con = new Conexao();
+            HospedeModelo hos = new HospedeModelo();
             //criando o metodo de cadastrar reservas
             public bool cadastrar(HospedeModelo hospedes)//passo o objeto reservas
             {//declaro a variavel da resposta da query
@@ -77,7 +78,7 @@ namespace Controller
             //metodo para carregar o hospedes
             public HospedeModelo Carregarhospede(string cpfh)
             {
-                HospedeModelo hos = new HospedeModelo();
+
                 MySqlConnection sqlcon = con.getConexao();
                 sqlcon.Open();
                 string sql = "SELECT * from hospedes where cpfh=@cpf";

@@ -46,7 +46,7 @@
             this.cbostatus = new System.Windows.Forms.ComboBox();
             this.btnalterar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.btncancelar = new System.Windows.Forms.Button();
+            this.btnCancelarReserva = new System.Windows.Forms.Button();
             this.cbonhospedesr = new System.Windows.Forms.ComboBox();
             this.cboquartor = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtreservas)).BeginInit();
@@ -59,7 +59,7 @@
             this.dtreservas.Name = "dtreservas";
             this.dtreservas.Size = new System.Drawing.Size(1125, 251);
             this.dtreservas.TabIndex = 0;
-            this.dtreservas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtreservas_CellContentClick);
+            this.dtreservas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtreservas_CellClick);
             // 
             // btnbuscar
             // 
@@ -108,6 +108,7 @@
             // 
             // txtcpf
             // 
+            this.txtcpf.Enabled = false;
             this.txtcpf.Location = new System.Drawing.Point(169, 76);
             this.txtcpf.Name = "txtcpf";
             this.txtcpf.Size = new System.Drawing.Size(148, 20);
@@ -127,6 +128,7 @@
             // 
             this.txtpreco.Location = new System.Drawing.Point(727, 163);
             this.txtpreco.Name = "txtpreco";
+            this.txtpreco.ReadOnly = true;
             this.txtpreco.Size = new System.Drawing.Size(55, 20);
             this.txtpreco.TabIndex = 7;
             // 
@@ -200,7 +202,7 @@
             this.btnalterar.TabIndex = 17;
             this.btnalterar.Text = "Alterar";
             this.btnalterar.UseVisualStyleBackColor = true;
-            this.btnalterar.Click += new System.EventHandler(this.btnalterarstatus_Click);
+            this.btnalterar.Click += new System.EventHandler(this.btnalterar_Click);
             // 
             // label6
             // 
@@ -211,14 +213,15 @@
             this.label6.TabIndex = 18;
             this.label6.Text = "Número de Hóspedes :";
             // 
-            // btncancelar
+            // btnCancelarReserva
             // 
-            this.btncancelar.Location = new System.Drawing.Point(1056, 536);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(75, 23);
-            this.btncancelar.TabIndex = 21;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btnCancelarReserva.Location = new System.Drawing.Point(1056, 536);
+            this.btnCancelarReserva.Name = "btnCancelarReserva";
+            this.btnCancelarReserva.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarReserva.TabIndex = 21;
+            this.btnCancelarReserva.Text = "Cancelar";
+            this.btnCancelarReserva.UseVisualStyleBackColor = true;
+            this.btnCancelarReserva.Click += new System.EventHandler(this.btnCancelarReserva_Click);
             // 
             // cbonhospedesr
             // 
@@ -245,7 +248,7 @@
             this.ClientSize = new System.Drawing.Size(1146, 657);
             this.Controls.Add(this.cboquartor);
             this.Controls.Add(this.cbonhospedesr);
-            this.Controls.Add(this.btncancelar);
+            this.Controls.Add(this.btnCancelarReserva);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnalterar);
             this.Controls.Add(this.cbostatus);
@@ -294,7 +297,7 @@
         private System.Windows.Forms.ComboBox cbostatus;
         private System.Windows.Forms.Button btnalterar;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btncancelar;
+        private System.Windows.Forms.Button btnCancelarReserva;
         private System.Windows.Forms.ComboBox cbonhospedesr;
         private System.Windows.Forms.ComboBox cboquartor;
     }

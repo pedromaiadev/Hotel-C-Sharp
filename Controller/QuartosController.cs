@@ -75,6 +75,23 @@ namespace Controller
             sqlcon.Close();
             return resultado;
         }
+        public bool AtualizarStatusQuarto(int idQuarto, int novoStatus)
+        {
+            bool resultado = false;
+            string sql = "UPDATE quartos SET status_id=@status_id WHERE idq=@idq";
+            MySqlConnection sqlcon = con.getConexao();
+            sqlcon.Open();
+            MySqlCommand command = new MySqlCommand(sql, sqlcon);
+            command.Parameters.AddWithValue("@status_id", novoStatus);
+            command.Parameters.AddWithValue("@idq", idQuarto);
+
+            if (command.ExecuteNonQuery() >= 1)
+                resultado = true;
+
+            sqlcon.Close();
+            return resultado;
+        }
+
         //metodo para carregar o usuario
         public QuartosModelo Carregaquartos(int codigo)
         {

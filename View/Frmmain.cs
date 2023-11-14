@@ -146,6 +146,7 @@ namespace UI_UX_Dashboard_P1
             if (result == DialogResult.Yes)
             {
                 this.Close();
+                Application.ExitThread();
                 //FrmLogn login = new FrmLogn();
                 //login.ShowDialog();
 

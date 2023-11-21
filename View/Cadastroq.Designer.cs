@@ -43,6 +43,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbostatusid = new System.Windows.Forms.ComboBox();
             this.txtcapacidadeq = new System.Windows.Forms.TextBox();
+            this.txtidq = new System.Windows.Forms.TextBox();
+            this.lblidq = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ptbfoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtQuartos)).BeginInit();
             this.SuspendLayout();
@@ -187,11 +189,30 @@
             this.txtcapacidadeq.Size = new System.Drawing.Size(50, 20);
             this.txtcapacidadeq.TabIndex = 63;
             // 
+            // txtidq
+            // 
+            this.txtidq.Location = new System.Drawing.Point(566, 169);
+            this.txtidq.Name = "txtidq";
+            this.txtidq.Size = new System.Drawing.Size(50, 20);
+            this.txtidq.TabIndex = 65;
+            // 
+            // lblidq
+            // 
+            this.lblidq.AutoSize = true;
+            this.lblidq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblidq.Location = new System.Drawing.Point(427, 171);
+            this.lblidq.Name = "lblidq";
+            this.lblidq.Size = new System.Drawing.Size(64, 16);
+            this.lblidq.TabIndex = 64;
+            this.lblidq.Text = "Id Quarto:";
+            // 
             // Cadastroq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1146, 580);
+            this.Controls.Add(this.txtidq);
+            this.Controls.Add(this.lblidq);
             this.Controls.Add(this.txtcapacidadeq);
             this.Controls.Add(this.cbostatusid);
             this.Controls.Add(this.label2);
@@ -234,5 +255,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbostatusid;
         private System.Windows.Forms.TextBox txtcapacidadeq;
+        private System.Windows.Forms.TextBox txtidq;
+        private System.Windows.Forms.Label lblidq;
     }
 }

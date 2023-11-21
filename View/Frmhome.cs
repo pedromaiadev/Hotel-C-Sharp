@@ -26,8 +26,6 @@ namespace testando
         QuartosModelo quartosModelo = new QuartosModelo();
         public Frmhome()
         {
-            // Crie o painel e a label no construtor
-            //CreateRoomPanel();
             InitializeComponent();
             CreateFromReservas();
             CreateFromHospedes();
@@ -89,7 +87,7 @@ namespace testando
             dt = com.obterdados("select * from quartos");
             int registros;//ler a quantidade de dados
             int x = 10, y = 52;//posição da tela 
-                               //varrer os registros da table produto
+            //varrer os registros da table produto
             for (registros = 0; registros < dt.Rows.Count; registros++)
             {
                 Panel borderPanel = new Panel();
@@ -114,15 +112,16 @@ namespace testando
                 roomPanel.Controls.Add(roomLabel);
                 borderPanel.Controls.Add(roomPanel);
                 Controls.Add(borderPanel);
-
+                
                 Button btnreserva = new Button();
                 btnreserva.Name = "btnreserva";
                 btnreserva.Text = "Reservar";
                 btnreserva.UseVisualStyleBackColor = false;
                 btnreserva.Font = new Font("Arial", 8, FontStyle.Bold);
                 //chamo o evento click do botao
-                //btnreserva.Click += new EventHandler((sender1, e1) => btnreservarClick(sender1, e1, btnreserva.Text));
-                btnreserva.Click += new EventHandler((sender1, e1) => btnreservarClick(sender, e));
+                btnreserva.Click += btnreservarClick;
+                btnreserva.Tag = dt.Rows[registros][4];
+                //btnreserva.Click += new EventHandler((sender1, e1) => btnreservarClick(sender1, e1));
                 btnreserva.Location = new Point(13, 63);
 
                 Button btnmanutencao = new Button();
@@ -242,7 +241,28 @@ namespace testando
                     break;
             }
         }
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void btnreservarClick(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null && btn.Tag != null)
+            {
+                // Recupera o número do quarto da tag
+                if (int.TryParse(btn.Tag.ToString(), out int roomNumber))
+                {
+                    // Verifica se o FormMain já está aberto
+                    Frmmain formMain = Application.OpenForms.OfType<Frmmain>().FirstOrDefault();
+                    if (formMain != null)
+                    {
+                        Frmreservas formReservas = new Frmreservas(roomNumber);
+                        formMain.AddChildForm(formReservas);
+                        formReservas.AtualizarComboBoxQuarto(roomNumber);
+                    }
+                }
+            }
+        }
+
+        /*private void btnreservarClick(object sender, EventArgs e)
         {
             // Conexão com o banco de dados    
             Conexao con = new Conexao();
@@ -261,20 +281,57 @@ namespace testando
                 Frmreservas formReservas = new Frmreservas(numeroQuarto);
                 formMain.AddChildForm(formReservas);
             }
-        }
+        }*/
+        /*private void ScheduleRoomMaintenance(int roomNumber, int maintenanceDurationInDays)
+        {
+            // Verifica se o quarto já está em manutenção
+            if (IsRoomUnderMaintenance(roomNumber))
+            {
+                MessageBox.Show("O quarto já está em manutenção.");
+                return;
+            }
+
+            // Atualiza o status do quarto para "Manutenção"
+            UpdateRoomStatus(roomNumber, RoomStatus.Maintenance);
+
+            // Agenda uma tarefa para mudar o status de volta para "Disponível" após o período de manutenção
+            var currentTime = DateTime.Now;
+            var endOfMaintenance = currentTime.AddDays(maintenanceDurationInDays);
+
+            Task.Delay(endOfMaintenance - currentTime).ContinueWith(task =>
+            {
+                // Verifica se o quarto ainda está em manutenção antes de mudar o status de volta para "Disponível"
+                if (IsRoomUnderMaintenance(roomNumber))
+                {
+                    UpdateRoomStatus(roomNumber, RoomStatus.Available);
+                }
+            });
+        }*/
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void btnmanutencaoClick(object sender, EventArgs e)
         {
-            /*abre o frmmanutenção do quarto(criar frmmanutenção),
-            e modifica o status do quarto para manutenção,
-            e 
-            */
+            var result = MessageBox.Show("Realmente deseja realizar uma Manutenção no Quarto?", "Realizar Manutenção", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                //int roomNumber = ExtractRoomNumberFromButton(sender);
+                //ScheduleRoomMaintenance(roomNumber, 7);
+                //Frmmanutençaõ manutençaõ = new Frmmanutençaõ();
+                //manutençaõ.ShowDialog();
+            }
+        }
+        /*private void btnmanutencaoClick(object sender, EventArgs e)
+        {
+
+            //e modifica o status do quarto para manutenção,
+            
             var result = MessageBox.Show("Realmente deseja realizar uma Manutenção no Quarto?", "Realizar Manutenção", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
                 //Frmmanutençaõ manutençaõ = new Frmmanutençaõ();
                 //manutençaõ.ShowDialog();
             }
-        }
+        }*/
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void btncheckoutClick(object sender, EventArgs e)
         {
             //abre o frmcheckout do quarto
@@ -282,18 +339,9 @@ namespace testando
         private void btnliberarClick(object sender, EventArgs e)
         {
             //libera o quarto modificando o status do quarto para disponivel
-            AtualizarStatusQuarto(numeroQuarto, StatusDisponivel);
+            //AtualizarStatusQuarto(numeroQuarto, StatusDisponivel);
         }
         // Método para extrair o número do quarto do botão clicado
-        private int ExtractRoomNumberFromButton(object sender)
-        {
-            Button btn = sender as Button;
-
-            // O nome do botão está no formato "btnreserva{numeroQuarto}"
-            string[] parts = btn.Name.Split(new char[] { 'a', 'r' }, StringSplitOptions.RemoveEmptyEntries);
-
-            // Retorna o número do quarto como inteiro
-            return int.Parse(parts[1]);
-        }
+        
     }
 }

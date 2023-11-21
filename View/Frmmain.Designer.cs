@@ -113,9 +113,9 @@
             this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Location = new System.Drawing.Point(14, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 25);
+            this.label1.Size = new System.Drawing.Size(59, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Admin Dashboard";
+            this.label1.Text = "Hotel";
             // 
             // panel3
             // 

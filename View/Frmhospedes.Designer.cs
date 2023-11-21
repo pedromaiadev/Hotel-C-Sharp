@@ -45,6 +45,8 @@
             this.lblCPF = new System.Windows.Forms.Label();
             this.lblstatush = new System.Windows.Forms.Label();
             this.cbostatush = new System.Windows.Forms.ComboBox();
+            this.txtidh = new System.Windows.Forms.TextBox();
+            this.lblIdh = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtHospede)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbfoto)).BeginInit();
             this.SuspendLayout();
@@ -198,11 +200,29 @@
             this.cbostatush.Size = new System.Drawing.Size(121, 21);
             this.cbostatush.TabIndex = 96;
             // 
-            // Cadastroh
+            // txtidh
+            // 
+            this.txtidh.Location = new System.Drawing.Point(682, 218);
+            this.txtidh.Name = "txtidh";
+            this.txtidh.Size = new System.Drawing.Size(63, 20);
+            this.txtidh.TabIndex = 98;
+            // 
+            // lblIdh
+            // 
+            this.lblIdh.AutoSize = true;
+            this.lblIdh.Location = new System.Drawing.Point(680, 202);
+            this.lblIdh.Name = "lblIdh";
+            this.lblIdh.Size = new System.Drawing.Size(65, 13);
+            this.lblIdh.TabIndex = 97;
+            this.lblIdh.Text = "Id Hospede:";
+            // 
+            // Frmhospedes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1146, 580);
+            this.Controls.Add(this.txtidh);
+            this.Controls.Add(this.lblIdh);
             this.Controls.Add(this.cbostatush);
             this.Controls.Add(this.lblstatush);
             this.Controls.Add(this.txtcpfh);
@@ -221,7 +241,7 @@
             this.Controls.Add(this.lblnomeh);
             this.Controls.Add(this.lblcadastrousu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Cadastroh";
+            this.Name = "Frmhospedes";
             this.Text = "Cadastroh";
             this.Load += new System.EventHandler(this.Cadastroh_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtHospede)).EndInit();
@@ -249,5 +269,7 @@
         private System.Windows.Forms.Label lblCPF;
         private System.Windows.Forms.Label lblstatush;
         private System.Windows.Forms.ComboBox cbostatush;
+        private System.Windows.Forms.TextBox txtidh;
+        private System.Windows.Forms.Label lblIdh;
     }
 }

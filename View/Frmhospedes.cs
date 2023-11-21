@@ -60,6 +60,7 @@ namespace testando
             hmodelo.telefoneh = txttelefoneh.Text;
             hmodelo.cpfh = txtcpfh.Text;
             hmodelo.fotoh = ptbfoto.Text;
+            hmodelo.idh = Convert.ToInt32(txtidh.Text);
 
             if (hcontroller.editar(hmodelo) == true)
             {
@@ -70,6 +71,7 @@ namespace testando
             {
                 MessageBox.Show("Erro ao atualizar Hospede");
             }
+            dtHospede.Refresh();
         }
         private void btnExcluir_Click(object sender, EventArgs e)
         {
@@ -92,7 +94,7 @@ namespace testando
             txtemailh.Text = dtHospede.Rows[e.RowIndex].Cells["emailh"].Value.ToString();
             txtcpfh.Text = dtHospede.Rows[e.RowIndex].Cells["cpfh"].Value.ToString();
             ptbfoto.Text = dtHospede.Rows[e.RowIndex].Cells["fotoh"].Value.ToString();
-            codigo = Convert.ToInt32(dtHospede.Rows[e.RowIndex].Cells["idh"].Value.ToString());  
+            txtidh.Text = dtHospede.Rows[e.RowIndex].Cells["idh"].Value.ToString();  
         }
         private void btnFoto_Click(object sender, EventArgs e)
         {

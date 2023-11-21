@@ -11,9 +11,9 @@ namespace Controller
 {
     public class HospedeController
     {
-        
             //instanciei o objeto conexao
             Conexao con = new Conexao();
+            //Conexao conexao = new Conexao();
             HospedeModelo hos = new HospedeModelo();
             //criando o metodo de cadastrar reservas
             public bool cadastrar(HospedeModelo hospedes)//passo o objeto reservas
@@ -39,6 +39,7 @@ namespace Controller
                 adapter.Fill(hos);
                 return hos;
             }
+            
             public bool editar(HospedeModelo hos)
             {
                 bool resultado = false;
@@ -98,6 +99,37 @@ namespace Controller
                 }
                 sqlcon.Close();
                 return hos;
+            }
+            public HospedeModelo ObterHospedePorId(int idHospede)
+            {
+                string query = "SELECT * FROM hospedes WHERE idh = @idh";
+
+                using (MySqlConnection connection = con.getConexao())
+                {
+                    connection.Open();
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@idh", idHospede);
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                HospedeModelo hospede = new HospedeModelo();
+                                hospede.idh = reader.GetInt32("idh");
+                                hospede.cpfh = reader.GetString("cpfh");
+                                hospede.nomeh = reader.GetString("nomeh");
+
+                                return hospede;
+                            }
+                            else
+                            {
+                                return null; // Retorna null se o hospede não for encontrado
+                            }
+                        }
+                    }
+                }
             }
             //finaliza o metodo
     }

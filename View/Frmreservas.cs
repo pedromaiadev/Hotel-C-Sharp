@@ -2,6 +2,7 @@
 using Google.Protobuf.WellKnownTypes;
 using Modelo;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,16 +22,32 @@ namespace testando
         QuartosModelo quartosmodelo = new QuartosModelo();
         QuartosController qcontroller = new QuartosController();
         ReservasController rcontroller = new ReservasController();
+        ReservasModelo reservasModelo = new ReservasModelo();
         HospedeController hcontroller = new HospedeController();
         HospedeModelo hmodelo = new HospedeModelo();
         int idquartos;
         int nhospedes;
-        public Frmreservas(int quarto)
+        
+        public Frmreservas(int roomNumber)
         {
-            idquartos = quarto;
-            quartosmodelo = rcontroller.obterdados(quarto);
+            //idquartos = quarto;
+            //quartosmodelo = rcontroller.obterdados(quarto);
             InitializeComponent();
         }
+        public void AtualizarComboBoxQuarto(int roomNumber)
+        {
+            // Atualize o ComboBox com base no roomNumber
+            if (cboquartor.Items.Cast<DataRowView>().Any(item => Convert.ToInt32(item.Row["idq"]) == roomNumber))
+            {
+                cboquartor.SelectedValue = roomNumber;
+            }
+            else
+            {
+                // Tratar o caso quando o roomNumber não está na lista (talvez exibir uma mensagem de erro)
+                MessageBox.Show("O número do quarto não está na lista.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void Frmreservas_Load(object sender, EventArgs e)
         {
             dtreservas.DataSource = rcontroller.obterdados("select reservas.idh, reservas.idq, date_format(reservas.datainr,'%d %m %y %T') as datainr, date_format(reservas.dataoutr,'%d %m %y %T') as dataoutr, reservas.preçor, reservas.nhospedesr, reservas.statusr, reservas.idr from reservas");
@@ -41,7 +58,7 @@ namespace testando
             cbostatus.DataSource = qcontroller.obterdados("select * from status");
             cbostatus.DisplayMember = "status";
             cbostatus.ValueMember = "idstatus";
-
+            
             cboquartor.Text = quartosmodelo.idq.ToString();
             cboquartor.DataSource = qcontroller.obterdados("select * from quartos");
             cboquartor.DisplayMember = "nomeq";
@@ -52,7 +69,6 @@ namespace testando
         }
         private void btnreservar_Click(object sender, EventArgs e)
         {
-            ReservasModelo reservasModelo = new ReservasModelo();
             if (rcontroller.ReservaExisteParaHospede(hmodelo.idh.ToString()))
             {
                 MessageBox.Show("Hóspede já possue Reserva, Deseja realizar uma nova reserva?");
@@ -120,28 +136,24 @@ namespace testando
 
         private void btnalterar_Click(object sender, EventArgs e)
         {
-            // Verifica se alguma reserva está selecionada
             if (dtreservas.SelectedRows.Count > 0)
             {
-                // Obtém o ID da reserva selecionada
-                int idReserva = Convert.ToInt32(dtreservas.SelectedRows[0].Cells["idr"].Value);
+                reservasModelo.idh = hmodelo.idh;
+                reservasModelo.idq = Convert.ToInt32(txtIdq.Text);
+                reservasModelo.datainr = dTentrada.Value;
+                reservasModelo.dataoutr = dTsaida.Value;
+                reservasModelo.preçor = txtpreco.Text;
+                reservasModelo.nhospedesr = Convert.ToInt32(quartosmodelo.capacidadeq);
+                reservasModelo.statusr = cbonhospedesr.Text;
 
-                // Carrega a reserva
-                ReservasModelo reserva = rcontroller.Carregareservas(idReserva);
-
-                if (reserva != null)
+                if (rcontroller.editar(reservasModelo) == true)
                 {
-                    // Atualiza a reserva no banco de dados
-                    if (rcontroller.editar(reserva))
-                    {
-                        MessageBox.Show("Reserva alterada com sucesso!");
-                        // Atualiza a exibição das reservas no DataGridView
-                        AtualizarGridReservas();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Erro ao alterar a reserva.");
-                    }
+                    MessageBox.Show("Reserva atualizada com sucesso");
+                    AtualizarGridReservas();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao atualizar Reserva");
                 }
             }
             else
@@ -223,50 +235,59 @@ namespace testando
         {
             hmodelo = hcontroller.Carregarhospede(txtcpf.Text);
         }
+        
+        private void AtualizarDataComMinMaxValue(object dataValue, DateTimePicker dateTimePicker)
+        {
+            DateTime data = DateTime.MinValue;
+            if (dataValue != null && dataValue != DBNull.Value)
+            {
+                data = Convert.ToDateTime(dataValue);
+
+                // Garante que a data está dentro dos limites do DateTimePicker
+                if (data < dateTimePicker.MinDate)
+                {
+                    data = dateTimePicker.MinDate;
+                }
+                else if (data > dateTimePicker.MaxDate)
+                {
+                    data = dateTimePicker.MaxDate;
+                }
+            }
+            dateTimePicker.Value = data;
+        }
+        
+        private void AtualizarCamposHospede(int idHospede)
+        {
+            HospedeModelo hospedeModelo = hcontroller.ObterHospedePorId(idHospede);
+
+            if (hospedeModelo != null)
+            {
+                txtcpf.Text = hospedeModelo.cpfh;
+                txtnomeh.Text = hospedeModelo.nomeh;
+            }
+            else
+            {
+                // Tratar o caso em que o hospedeModelo é nulo (talvez exibir uma mensagem de erro)
+                MessageBox.Show("Não foi possível carregar os dados do hóspede.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void dtreservas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dtreservas.Rows[e.RowIndex];
-
+                
                 object idhValue = row.Cells["idh"].Value;
-                txtcpf.Text = idhValue != null ? idhValue.ToString() : string.Empty;
+                string idh = idhValue != null ? idhValue.ToString() : string.Empty;
+                AtualizarCamposHospede(Convert.ToInt32(idhValue));
 
                 object idqValue = row.Cells["idq"].Value;
-                cboquartor.Text = idqValue != null ? idqValue.ToString() : string.Empty;
+                string idq = idqValue != null ? idqValue.ToString() : string.Empty;
+                txtIdq.Text = idq;
 
-                object datainrValue = row.Cells["datainr"].Value;
-                DateTime datainr = DateTime.MinValue;
-                if (datainrValue != null && datainrValue != DBNull.Value)
-                {
-                    datainr = Convert.ToDateTime(datainrValue);
-                    if (datainr < dTentrada.MinDate)
-                    {
-                        datainr = dTentrada.MinDate;
-                    }
-                    else if (datainr > dTentrada.MaxDate)
-                    {
-                        datainr = dTentrada.MaxDate;
-                    }
-                }
-                dTentrada.Value = datainr;
-
-                object dataoutrValue = row.Cells["dataoutr"].Value;
-                DateTime dataoutr = DateTime.MinValue;
-                if (dataoutrValue != null && dataoutrValue != DBNull.Value)
-                {
-                    dataoutr = Convert.ToDateTime(dataoutrValue);
-                    if (dataoutr < dTsaida.MinDate)
-                    {
-                        dataoutr = dTsaida.MinDate;
-                    }
-                    else if (dataoutr > dTsaida.MaxDate)
-                    {
-                        dataoutr = dTsaida.MaxDate;
-                    }
-                }
-                dTsaida.Value = dataoutr;
+                AtualizarDataComMinMaxValue(row.Cells["datainr"].Value, dTentrada);
+                AtualizarDataComMinMaxValue(row.Cells["dataoutr"].Value, dTsaida);
 
                 object precoValue = row.Cells["preçor"].Value;
                 txtpreco.Text = precoValue != null ? precoValue.ToString() : string.Empty;
@@ -276,6 +297,7 @@ namespace testando
 
                 object statusrValue = row.Cells["statusr"].Value;
                 cbostatus.Text = statusrValue != null ? statusrValue.ToString() : string.Empty;
+ 
             }
         }
 

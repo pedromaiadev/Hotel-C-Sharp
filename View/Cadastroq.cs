@@ -32,9 +32,9 @@ namespace testando
             cbostatusid.ValueMember = "idstatus";
         }
         // CRUD inicio
-        private void btnConectar_Click(object sender, EventArgs e)
+        private void Atualizardtquartos()
         {
-
+            dtQuartos.DataSource = qcontroller.obterdados("select quartos.nomeq, quartos.capacidadeq, quartos.preçoq, quartos.status_id, quartos.idq from quartos inner join status on status.idstatus = quartos.status_id");
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
@@ -47,7 +47,7 @@ namespace testando
                 if (qcontroller.cadastrar(qmodelo) == true)
                 {
                     MessageBox.Show("cadastro com sucesso!");
-
+                    Atualizardtquartos();
                 }
                 else
                 {
@@ -62,14 +62,17 @@ namespace testando
             qmodelo.preçoq = Convert.ToSingle(txtpreçoq.Text);
             qmodelo.capacidadeq = txtcapacidadeq.Text;
             qmodelo.status_id = idstatus.ToString();
+            qmodelo.idq = Convert.ToInt32(txtidq.Text);
             if (qcontroller.editar(qmodelo) == true)
             {
                 MessageBox.Show("Quarto atualizado com sucesso");
+                Atualizardtquartos();
             }
             else
             {
                 MessageBox.Show("Erro ao atualizar quarto");
             }
+            dtQuartos.Refresh();
         }
         private void btnExcluir_Click(object sender, EventArgs e)
         {
@@ -90,6 +93,7 @@ namespace testando
             txtpreçoq.Text = dtQuartos.Rows[e.RowIndex].Cells["preçoq"].Value.ToString();
             txtcapacidadeq.Text = dtQuartos.Rows[e.RowIndex].Cells["capacidadeq"].Value.ToString();
             cbostatusid.Text = dtQuartos.Rows[e.RowIndex].Cells["status_id"].Value.ToString();
+            txtidq.Text = dtQuartos.Rows[e.RowIndex].Cells["idq"].Value.ToString();
         }
         private void cbotipo_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -28,11 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -49,13 +44,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.panel21 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.lblmanutencao = new System.Windows.Forms.Label();
-            this.lblreserv = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.lbldisponivel = new System.Windows.Forms.Label();
             this.lblocupado = new System.Windows.Forms.Label();
@@ -70,73 +59,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.panel18.SuspendLayout();
-            this.panel19.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel21.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.panelquartos.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel18
-            // 
-            this.panel18.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel18.Controls.Add(this.label22);
-            this.panel18.Controls.Add(this.label12);
-            this.panel18.Controls.Add(this.panel19);
-            this.panel18.Location = new System.Drawing.Point(827, 3);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(200, 220);
-            this.panel18.TabIndex = 30;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label22.ForeColor = System.Drawing.Color.DimGray;
-            this.label22.Location = new System.Drawing.Point(72, 195);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(67, 15);
-            this.label22.TabIndex = 15;
-            this.label22.Text = " Chamados";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label12.ForeColor = System.Drawing.Color.DimGray;
-            this.label12.Location = new System.Drawing.Point(72, 141);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(64, 15);
-            this.label12.TabIndex = 9;
-            this.label12.Text = "Btn Liberar";
-            // 
-            // panel19
-            // 
-            this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(58)))), ((int)(((byte)(58)))));
-            this.panel19.Controls.Add(this.label13);
-            this.panel19.Location = new System.Drawing.Point(0, 0);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(200, 50);
-            this.panel19.TabIndex = 8;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.label13.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label13.Location = new System.Drawing.Point(15, 14);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(87, 23);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "Quarto 01";
             // 
             // panel4
             // 
@@ -146,7 +76,7 @@
             this.panel4.Controls.Add(this.label35);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.panel5);
-            this.panel4.Location = new System.Drawing.Point(415, 3);
+            this.panel4.Location = new System.Drawing.Point(209, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 220);
             this.panel4.TabIndex = 23;
@@ -226,7 +156,7 @@
             this.panel20.Controls.Add(this.label37);
             this.panel20.Controls.Add(this.label14);
             this.panel20.Controls.Add(this.panel21);
-            this.panel20.Location = new System.Drawing.Point(621, 3);
+            this.panel20.Location = new System.Drawing.Point(415, 3);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(200, 220);
             this.panel20.TabIndex = 31;
@@ -318,60 +248,6 @@
             this.label15.TabIndex = 8;
             this.label15.Text = "Quarto 01";
             // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel6.Controls.Add(this.label34);
-            this.panel6.Controls.Add(this.label6);
-            this.panel6.Controls.Add(this.panel7);
-            this.panel6.Location = new System.Drawing.Point(209, 3);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(200, 220);
-            this.panel6.TabIndex = 24;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label34.ForeColor = System.Drawing.Color.DimGray;
-            this.label34.Location = new System.Drawing.Point(30, 60);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(72, 15);
-            this.label34.TabIndex = 12;
-            this.label34.Text = "Btn Reservar";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label6.ForeColor = System.Drawing.Color.DimGray;
-            this.label6.Location = new System.Drawing.Point(53, 168);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 15);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Btn Manutenção";
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.SeaGreen;
-            this.panel7.Controls.Add(this.label7);
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(200, 50);
-            this.panel7.TabIndex = 8;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.label7.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label7.Location = new System.Drawing.Point(15, 14);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(87, 23);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Quarto 01";
-            // 
             // lblmanutencao
             // 
             this.lblmanutencao.AutoSize = true;
@@ -383,18 +259,6 @@
             this.lblmanutencao.Size = new System.Drawing.Size(74, 15);
             this.lblmanutencao.TabIndex = 29;
             this.lblmanutencao.Text = "Manutenção";
-            // 
-            // lblreserv
-            // 
-            this.lblreserv.AutoSize = true;
-            this.lblreserv.BackColor = System.Drawing.Color.Gray;
-            this.lblreserv.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblreserv.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblreserv.Location = new System.Drawing.Point(63, 17);
-            this.lblreserv.Name = "lblreserv";
-            this.lblreserv.Size = new System.Drawing.Size(62, 15);
-            this.lblreserv.TabIndex = 27;
-            this.lblreserv.Text = "Disponivel";
             // 
             // label27
             // 
@@ -446,14 +310,13 @@
             // 
             // panelquartos
             // 
+            this.panelquartos.AutoScroll = true;
             this.panelquartos.Controls.Add(this.panel1);
-            this.panelquartos.Controls.Add(this.panel6);
             this.panelquartos.Controls.Add(this.panel4);
             this.panelquartos.Controls.Add(this.panel20);
-            this.panelquartos.Controls.Add(this.panel18);
-            this.panelquartos.Location = new System.Drawing.Point(3, 35);
+            this.panelquartos.Location = new System.Drawing.Point(0, 35);
             this.panelquartos.Name = "panelquartos";
-            this.panelquartos.Size = new System.Drawing.Size(1115, 592);
+            this.panelquartos.Size = new System.Drawing.Size(1172, 622);
             this.panelquartos.TabIndex = 32;
             // 
             // panel1
@@ -558,34 +421,21 @@
             this.label9.TabIndex = 8;
             this.label9.Text = "Quarto 01";
             // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(1121, 35);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 590);
-            this.vScrollBar1.TabIndex = 32;
-            // 
             // Frmhome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1146, 632);
+            this.ClientSize = new System.Drawing.Size(1172, 657);
             this.Controls.Add(this.panelquartos);
             this.Controls.Add(this.lblmanutencao);
-            this.Controls.Add(this.lblreserv);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.lbldisponivel);
-            this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.lblocupado);
             this.Controls.Add(this.lblreservado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Frmhome";
             this.Text = "Frmhome";
             this.Load += new System.EventHandler(this.Frmhome_Load);
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
-            this.panel19.ResumeLayout(false);
-            this.panel19.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -594,10 +444,6 @@
             this.panel20.PerformLayout();
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
             this.panelquartos.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -609,10 +455,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel5;
@@ -621,19 +463,13 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblmanutencao;
-        private System.Windows.Forms.Label lblreserv;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label lbldisponivel;
         private System.Windows.Forms.Label lblocupado;
         private System.Windows.Forms.Label lblreservado;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label34;
         private System.Windows.Forms.FlowLayoutPanel panelquartos;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label16;
@@ -644,14 +480,11 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }

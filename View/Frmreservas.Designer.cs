@@ -49,6 +49,10 @@
             this.btnCancelarReserva = new System.Windows.Forms.Button();
             this.cbonhospedesr = new System.Windows.Forms.ComboBox();
             this.cboquartor = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtIdq = new System.Windows.Forms.TextBox();
+            this.lblnomeh = new System.Windows.Forms.Label();
+            this.txtnomeh = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtreservas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +104,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 80);
+            this.label1.Location = new System.Drawing.Point(43, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 6;
@@ -108,8 +112,7 @@
             // 
             // txtcpf
             // 
-            this.txtcpf.Enabled = false;
-            this.txtcpf.Location = new System.Drawing.Point(169, 76);
+            this.txtcpf.Location = new System.Drawing.Point(177, 125);
             this.txtcpf.Name = "txtcpf";
             this.txtcpf.Size = new System.Drawing.Size(148, 20);
             this.txtcpf.TabIndex = 5;
@@ -118,7 +121,7 @@
             // lblquartor
             // 
             this.lblquartor.AutoSize = true;
-            this.lblquartor.Location = new System.Drawing.Point(33, 124);
+            this.lblquartor.Location = new System.Drawing.Point(43, 170);
             this.lblquartor.Name = "lblquartor";
             this.lblquartor.Size = new System.Drawing.Size(91, 13);
             this.lblquartor.TabIndex = 8;
@@ -180,7 +183,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(584, 210);
+            this.label5.Location = new System.Drawing.Point(506, 543);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 15;
@@ -189,7 +192,7 @@
             // cbostatus
             // 
             this.cbostatus.FormattingEnabled = true;
-            this.cbostatus.Location = new System.Drawing.Point(727, 206);
+            this.cbostatus.Location = new System.Drawing.Point(649, 539);
             this.cbostatus.Name = "cbostatus";
             this.cbostatus.Size = new System.Drawing.Size(121, 21);
             this.cbostatus.TabIndex = 16;
@@ -207,7 +210,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 168);
+            this.label6.Location = new System.Drawing.Point(43, 211);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(116, 13);
             this.label6.TabIndex = 18;
@@ -226,7 +229,7 @@
             // cbonhospedesr
             // 
             this.cbonhospedesr.FormattingEnabled = true;
-            this.cbonhospedesr.Location = new System.Drawing.Point(169, 163);
+            this.cbonhospedesr.Location = new System.Drawing.Point(177, 208);
             this.cbonhospedesr.Name = "cbonhospedesr";
             this.cbonhospedesr.Size = new System.Drawing.Size(55, 21);
             this.cbonhospedesr.TabIndex = 23;
@@ -235,17 +238,53 @@
             // cboquartor
             // 
             this.cboquartor.FormattingEnabled = true;
-            this.cboquartor.Location = new System.Drawing.Point(169, 117);
+            this.cboquartor.Location = new System.Drawing.Point(177, 166);
             this.cboquartor.Name = "cboquartor";
             this.cboquartor.Size = new System.Drawing.Size(148, 21);
             this.cboquartor.TabIndex = 24;
             this.cboquartor.SelectedIndexChanged += new System.EventHandler(this.cboquartor_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(585, 211);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(72, 13);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "Id do Quarto :";
+            // 
+            // txtIdq
+            // 
+            this.txtIdq.Location = new System.Drawing.Point(727, 207);
+            this.txtIdq.Name = "txtIdq";
+            this.txtIdq.Size = new System.Drawing.Size(55, 20);
+            this.txtIdq.TabIndex = 25;
+            // 
+            // lblnomeh
+            // 
+            this.lblnomeh.AutoSize = true;
+            this.lblnomeh.Location = new System.Drawing.Point(43, 88);
+            this.lblnomeh.Name = "lblnomeh";
+            this.lblnomeh.Size = new System.Drawing.Size(97, 13);
+            this.lblnomeh.TabIndex = 28;
+            this.lblnomeh.Text = "Nome do hospede:";
+            // 
+            // txtnomeh
+            // 
+            this.txtnomeh.Location = new System.Drawing.Point(177, 84);
+            this.txtnomeh.Name = "txtnomeh";
+            this.txtnomeh.Size = new System.Drawing.Size(148, 20);
+            this.txtnomeh.TabIndex = 27;
             // 
             // Frmreservas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1146, 657);
+            this.Controls.Add(this.lblnomeh);
+            this.Controls.Add(this.txtnomeh);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtIdq);
             this.Controls.Add(this.cboquartor);
             this.Controls.Add(this.cbonhospedesr);
             this.Controls.Add(this.btnCancelarReserva);
@@ -300,5 +339,9 @@
         private System.Windows.Forms.Button btnCancelarReserva;
         private System.Windows.Forms.ComboBox cbonhospedesr;
         private System.Windows.Forms.ComboBox cboquartor;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtIdq;
+        private System.Windows.Forms.Label lblnomeh;
+        private System.Windows.Forms.TextBox txtnomeh;
     }
 }
